@@ -10,14 +10,47 @@ public class Main
 {
     public static void main(String[] args) throws IOException
     {
+
+        showTile();
         ImageToASCII();
     }
+
+    //TODO: Add file picker
+    //TODO: Add RASCIIe Tile Screen
+
+
+    public static void showTile()
+    {
+        /*
+        System.out.println("  _______          _       ______     ______  _____  _____");
+        System.out.println(" |_   __ \\        / \\    .' ____ \\  .' ___  ||_   _||_   _|");
+        System.out.println("   | |__) |      / _ \\   | (___ \\_|/ .'   \\_|  | |    | |  .---.");
+        System.out.println("   |  __ /      / ___ \\   _.____`. | |         | |    | | / /__\\\\");
+        System.out.println("  _| |  \\ \\_  _/ /   \\ \\_| \\____) |\\ `.___.'\\ _| |_  _| |_| \\__.,");
+        System.out.println("|____| |___||____| |____|\\______.' `.____ .'|_____||_____|'.__.'");
+
+         */
+
+
+        System.out.println("   _______          _       ______     ______   ___  ___");
+        System.out.println("  |_   __ \\        / \\    .' ____ \\  .' ___  |  | |  | |");
+        System.out.println("     ||__) |      / _ \\   | (___ \\_|/ .'   \\_|  | |  | |  .---.");
+        System.out.println("    |  __ /      / ___ \\   _.____`. | |         | |  | | / /__\\\\");
+        System.out.println("   _| |  \\ \\_  _/ /   \\ \\_| \\____) |\\ `.___.'\\  | |  | | | \\__.,");
+        System.out.println("  |____| |___||____| |____|\\______.' `.____ .'  |_|  |_| '.__.'");
+
+
+
+
+
+    }
+
 
     public static void ImageToASCII() throws  IOException
     {
 
 
-       // BufferedImage image = ImageIO.read(new File("G:\\BeffaloJava\\ASCIIRender\\untitled\\TestImg1.png"));
+        //BufferedImage image = ImageIO.read(new File("G:\\BeffaloJava\\ASCIIRender\\untitled\\RASCIIe1.png"));
         BufferedImage image = ImageIO.read(new File("G:\\Roll2.jpg"));
 
 
