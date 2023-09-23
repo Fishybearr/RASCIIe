@@ -11,7 +11,7 @@ public class Main
     public static void main(String[] args) throws IOException
     {
 
-        showTile();
+        //showTile();
         ImageToASCII();
     }
 
@@ -19,7 +19,7 @@ public class Main
     //TODO: Add RASCIIe Tile Screen
 
 
-    public static void showTile()
+    public static void showTile(BufferedWriter writeTo) throws IOException
     {
         /*
         System.out.println("  _______          _       ______     ______  _____  _____");
@@ -32,12 +32,14 @@ public class Main
          */
 
 
-        System.out.println("   _______          _       ______     ______   ___  ___");
-        System.out.println("  |_   __ \\        / \\    .' ____ \\  .' ___  |  | |  | |");
-        System.out.println("     ||__) |      / _ \\   | (___ \\_|/ .'   \\_|  | |  | |  .---.");
-        System.out.println("    |  __ /      / ___ \\   _.____`. | |         | |  | | / /__\\\\");
-        System.out.println("   _| |  \\ \\_  _/ /   \\ \\_| \\____) |\\ `.___.'\\  | |  | | | \\__.,");
-        System.out.println("  |____| |___||____| |____|\\______.' `.____ .'  |_|  |_| '.__.'");
+        writeTo.append("\nCreated in: ");
+        writeTo.append("   _______          _       ______     ______   ___  ___\n");
+        writeTo.append("\n              |_   __ \\        / \\    .' ____ \\  .' ___  |  | |  | |");
+        writeTo.append("\n                 ||__) |      / _ \\   | (___ \\_|/ .'   \\_|  | |  | |  .---.");
+        writeTo.append("\n                |  __ /      / ___ \\   _.____`. | |         | |  | | / /__\\\\");
+        writeTo.append("\n               _| |  \\ \\_  _/ /   \\ \\_| \\____) |\\ `.___.'\\  | |  | | | \\__.,");
+        writeTo.append("\n              |____| |___||____| |____|\\______.' `.____ .'  |_|  |_| '.__.'");
+        writeTo.append("\nhttps://github.com/Fishybearr/RASCIIe");
 
 
 
@@ -73,46 +75,110 @@ public class Main
                 float luminance = (red * 0.2126f + green * 0.7152f + blue * 0.0722f) / 255;
 
 
-                if (luminance >= .875f)
+
+                if (luminance >= .9375f)
                 {
                     //System.out.print(" * ");
                     writer.append("   ");
                 }
+
+               else if (luminance >= .875f)
+                {
+                    //System.out.print(" * ");
+                    writer.append(" a ");
+                }
+
+
+                else if (luminance >= .8125f)
+                {
+                    //System.out.print(" * ");
+                    writer.append(" b ");
+                }
+
                 else if(luminance >= .75f)
                 {
                    // System.out.print(" # ");
-                    writer.append(" a ");
+                    writer.append(" c ");
                 }
+
+                else if (luminance >= .6875f)
+                {
+                    //System.out.print(" * ");
+                    writer.append(" d ");
+                }
+
                 else if (luminance >= .625f)
                 {
-                    writer.append(" b ");
+                    writer.append(" e ");
 
                 }
+
+
+                else if (luminance >= .5625f)
+                {
+                    //System.out.print(" * ");
+                    writer.append(" f ");
+                }
+
                 else if (luminance >= .50f)
                 {
-                    writer.append(" c ");
+                    writer.append(" g ");
+                }
+
+
+                else if (luminance >= .4375f)
+                {
+                    //System.out.print(" * ");
+                    writer.append(" h ");
                 }
 
                 else if (luminance >= .375f)
                 {
-                    writer.append(" d ");
+                    writer.append(" i ");
                 }
 
                 else if (luminance >= .25f)
                 {
-                    writer.append(" e ");
+                    writer.append(" j ");
+                }
+
+
+                else if (luminance >= .3125f)
+                {
+                    //System.out.print(" * ");
+                    writer.append(" k ");
+                }
+
+
+                else if (luminance >= .25f)
+                {
+                    //System.out.print(" * ");
+                    writer.append(" l ");
+                }
+
+
+               else if (luminance >= .1875f)
+                {
+                    //System.out.print(" * ");
+                    writer.append(" m ");
+                }
+
+                else if (luminance >= .0625f)
+                {
+                    //System.out.print(" * ");
+                    writer.append(" n ");
                 }
 
                 else if (luminance >= .125f)
                 {
-                    writer.append(" f ");
+                    writer.append(" o ");
                 }
 
 
                 else
                 {
                     //System.out.print("   ");
-                    writer.append(" g ");
+                    writer.append(" p ");
                 }
 
             }
@@ -122,6 +188,8 @@ public class Main
 
         }
 
+        showTile(writer);
+        writer.close();
 
     }
 
