@@ -33,7 +33,7 @@ public class Main
 
 
         writeTo.append("\nCreated in: ");
-        writeTo.append("   _______          _       ______     ______   ___  ___\n");
+        writeTo.append("   _______          _       ______     ______   ___  ___");
         writeTo.append("\n              |_   __ \\        / \\    .' ____ \\  .' ___  |  | |  | |");
         writeTo.append("\n                 ||__) |      / _ \\   | (___ \\_|/ .'   \\_|  | |  | |  .---.");
         writeTo.append("\n                |  __ /      / ___ \\   _.____`. | |         | |  | | / /__\\\\");
