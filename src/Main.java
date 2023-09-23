@@ -82,14 +82,6 @@ public class Main
                     writer.append(" g ");
                 }
 
-
-
-
-
-
-
-
-
             }
 
             //System.out.println("");
