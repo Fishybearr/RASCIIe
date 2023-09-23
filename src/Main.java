@@ -39,7 +39,8 @@ public class Main
 
                 float luminance = (red * 0.2126f + green * 0.7152f + blue * 0.0722f) / 255;
 
-                if (luminance >= .98f)
+
+                if (luminance >= .875f)
                 {
                     //System.out.print(" * ");
                     writer.append("   ");
@@ -47,22 +48,47 @@ public class Main
                 else if(luminance >= .75f)
                 {
                    // System.out.print(" # ");
-                    writer.append(" * ");
+                    writer.append(" a ");
                 }
-                else if (luminance >= .5f)
+                else if (luminance >= .625f)
                 {
-                    writer.append(" @ ");
+                    writer.append(" b ");
 
                 }
+                else if (luminance >= .50f)
+                {
+                    writer.append(" c ");
+                }
+
+                else if (luminance >= .375f)
+                {
+                    writer.append(" d ");
+                }
+
                 else if (luminance >= .25f)
                 {
-                    writer.append(" & ");
+                    writer.append(" e ");
                 }
+
+                else if (luminance >= .125f)
+                {
+                    writer.append(" f ");
+                }
+
+
                 else
                 {
                     //System.out.print("   ");
-                    writer.append(" # ");
+                    writer.append(" g ");
                 }
+
+
+
+
+
+
+
+
 
             }
 
