@@ -1,4 +1,6 @@
 import javax.imageio.ImageIO;
+import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.BufferedWriter;
@@ -6,8 +8,14 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
+/**
+ *Converts a jpg or png image to a 16 shade ASCII art text file
+ *
+ *
+ */
 public class Main
 {
+
     public static void main(String[] args) throws IOException
     {
 
@@ -15,12 +23,16 @@ public class Main
         ImageToASCII();
     }
 
-    //TODO: Add file picker
-    //TODO: Add RASCIIe Tile Screen
 
-
+    /**
+     * Creates and adds logo to bottom of ASCII art text file
+     * @param writeTo -References BufferedWriter used to write text to ASCII art files
+     * @throws IOException
+     */
     public static void showTile(BufferedWriter writeTo) throws IOException
     {
+
+        //Used for Testing
         /*
         System.out.println("  _______          _       ______     ______  _____  _____");
         System.out.println(" |_   __ \\        / \\    .' ____ \\  .' ___  ||_   _||_   _|");
@@ -32,6 +44,7 @@ public class Main
          */
 
 
+        //Adds logo to file
         writeTo.append("\nCreated in: ");
         writeTo.append("   _______          _       ______     ______   ___  ___");
         writeTo.append("\n              |_   __ \\        / \\    .' ____ \\  .' ___  |  | |  | |");
@@ -41,25 +54,34 @@ public class Main
         writeTo.append("\n              |____| |___||____| |____|\\______.' `.____ .'  |_|  |_| '.__.'");
         writeTo.append("\nhttps://github.com/Fishybearr/RASCIIe");
 
-
-
-
-
     }
 
-
+    /**
+     * Allows user to choose an image
+     * Each pixel of selected image is assigned an ASCII character based on its calculated luminance
+     * @throws IOException
+     */
     public static void ImageToASCII() throws  IOException
     {
 
+        //Creates JFile chooser to select image to convert
+        JFileChooser fc = new JFileChooser();
+        fc.setDialogTitle("RASCIIe: Choose an Image");
+        fc.addChoosableFileFilter(new FileNameExtensionFilter("images, .jpg , .png","jpg","jpeg","png"));
+        fc.setAcceptAllFileFilterUsed(false);
+        fc.showOpenDialog(null);
 
-        //BufferedImage image = ImageIO.read(new File("G:\\BeffaloJava\\ASCIIRender\\untitled\\RASCIIe1.png"));
-        BufferedImage image = ImageIO.read(new File("G:\\Roll2.jpg"));
-
-
-        BufferedWriter writer = new BufferedWriter(new FileWriter("G:\\BeffaloJava\\ASCIIRender\\untitled\\Test.txt"));
+        File img = fc.getSelectedFile();
 
 
 
+        BufferedImage image = ImageIO.read(img);
+
+        //Currently writes ASCII art file to a text file in project folder
+        BufferedWriter writer = new BufferedWriter(new FileWriter(System.getProperty("user.dir")+"\\Test.txt"));
+
+
+        //Checks luminance of each pixel in image
         for (int y = 0; y <image.getHeight();y++)
         {
             //System.out.print(y);
@@ -75,7 +97,7 @@ public class Main
                 float luminance = (red * 0.2126f + green * 0.7152f + blue * 0.0722f) / 255;
 
 
-
+                //[WIP Solution] Sorts pixel's luminance into 1 of 16 possible values, and assigns it a letter used in image
                 if (luminance >= .9375f)
                 {
                     //System.out.print(" * ");
@@ -137,29 +159,30 @@ public class Main
                     writer.append(" i ");
                 }
 
-                else if (luminance >= .25f)
+                else if (luminance >= .3125f)
                 {
+                    //System.out.print(" * ");
                     writer.append(" j ");
                 }
 
 
-                else if (luminance >= .3125f)
+                else if (luminance >= .25f)
                 {
                     //System.out.print(" * ");
                     writer.append(" k ");
                 }
 
 
-                else if (luminance >= .25f)
+               else if (luminance >= .1875f)
                 {
                     //System.out.print(" * ");
                     writer.append(" l ");
                 }
 
 
-               else if (luminance >= .1875f)
+
+                else if (luminance >= .125f)
                 {
-                    //System.out.print(" * ");
                     writer.append(" m ");
                 }
 
@@ -169,26 +192,23 @@ public class Main
                     writer.append(" n ");
                 }
 
-                else if (luminance >= .125f)
-                {
-                    writer.append(" o ");
-                }
-
 
                 else
                 {
                     //System.out.print("   ");
-                    writer.append(" p ");
+                    writer.append(" o ");
                 }
 
             }
 
-            //System.out.println("");
+            //Finishes image with a new line
             writer.append("\n");
 
         }
 
+        //Adds title to image
         showTile(writer);
+        //Closes file writer
         writer.close();
 
     }
